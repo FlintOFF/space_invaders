@@ -29,7 +29,7 @@ module AtrApi::V1
           frame: params[:frame],
           radar: Radar.find(params[:radar_id])
         )
-        DetectTargetsJob.perform_now(task_id: task.id)
+        TaskDetectJob.perform_now(task_id: task.id)
         present task.reload, with: Entities::Task
       end
     end
