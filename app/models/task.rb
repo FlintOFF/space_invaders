@@ -4,12 +4,8 @@ class Task < ApplicationRecord
 
   enum status: { pending: 0, working: 3, failed: 6, complete: 9 }
 
-
   validates :frame, presence: true
-  validate :validate_frame_resolution, :validate_frame_symbols
-
-  # validates :coordinates, presence: true
-
+  validate :validate_frame_resolution, :validate_frame_symbols, :validate_targets_count
 
   def validate_frame_resolution
     unless radar.frame_height == frame.size && radar.frame_width == frame.first.try(:size).to_i
@@ -20,6 +16,12 @@ class Task < ApplicationRecord
   def validate_frame_symbols
     unless (frame.flatten.uniq - radar.frame_symbols).size.zero?
       errors.add(:frame, 'frame must contain the same symbols as radar frame')
+    end
+  end
+
+  def validate_targets_count
+    if radar.targets.size.zero?
+      errors.add(:task, "Couldn't find any records of targets for detect")
     end
   end
 
