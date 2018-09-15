@@ -3,7 +3,7 @@ module AtrApi
     format :json
 
     rescue_from Grape::Knock::ForbiddenError do
-      error!('403 Forbidden', 403)
+      error!('Forbidden', 403)
     end
 
     rescue_from ActiveRecord::RecordNotFound do |e|
