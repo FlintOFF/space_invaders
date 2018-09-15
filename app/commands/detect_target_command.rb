@@ -74,11 +74,12 @@ class DetectTargetCommand
 
   def compare_frames(base_frame, frame)
     same = base_frame.flatten.zip(frame.flatten).select { |a, b| a == b }.size
+    return 0 if base_frame.flatten.size.zero?
     (same.to_f / base_frame.flatten.size * 100).round
   end
 
   def overlap(base_frame, frame)
-    (((frame.size.to_f * frame.first.size) / (base_frame.size * base_frame.first.size)) * 100).round
+    (((frame&.try(:size).to_f * frame.first&.try(:size).to_f) / (base_frame&.try(:size).to_f * base_frame.first&.try(:size).to_f)) * 100).round
   end
 
   def cut_frame(frame, x_start, x_size, y_start, y_size)

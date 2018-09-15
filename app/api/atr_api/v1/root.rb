@@ -8,9 +8,11 @@ module AtrApi::V1
 
     # with authentications
     use Grape::Knock::Authenticable
-    mount AtrApi::V1::Admin::Root
     mount AtrApi::V1::Tasks
     mount AtrApi::V1::Targets
     mount AtrApi::V1::Radars
+
+    # admin area
+    mount AtrApi::V1::Admin::Root
   end
 end
