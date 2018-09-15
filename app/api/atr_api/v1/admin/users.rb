@@ -20,10 +20,11 @@ module AtrApi::V1::Admin
       desc 'Create user'
       params do
         requires :email, allow_blank: false, regexp: /.+@.+/, desc: 'Email.'
+        requires :password, allow_blank: false, desc: 'Password.'
         optional :admin, type: Boolean, default: false, desc: 'Is admin?.'
       end
       post do
-        present User.create!(declared(params), include_missing: false), with: AtrApi::V1::Entities::User
+        present User.create!(declared(params, include_missing: false)), with: AtrApi::V1::Entities::User
       end
 
       desc 'Update user'
@@ -33,7 +34,9 @@ module AtrApi::V1::Admin
         optional :admin, type: Boolean, default: false, desc: 'Is admin?.'
       end
       put ':id' do
-        present User.find(params[:id]).update(declared(params), include_missing: false), with: AtrApi::V1::Entities::Radar
+        user = User.find(params[:id])
+        user.update(declared(params, include_missing: false))
+        present user, with: AtrApi::V1::Entities::User
       end
 
       desc 'Delete user'

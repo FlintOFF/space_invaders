@@ -10,7 +10,7 @@ module AtrApi::V1::Admin
         requires :frame_symbols, type: Array, desc: 'Frame symbols.'
       end
       post do
-        present Radar.create!(declared(params), include_missing: false), with: AtrApi::V1::Entities::Radar
+        present Radar.create!(declared(params, include_missing: false)), with: AtrApi::V1::Entities::Radar
       end
 
       desc 'Update radar'
@@ -23,7 +23,9 @@ module AtrApi::V1::Admin
         optional :frame_symbols, type: Array, desc: 'Frame symbols.'
       end
       put ':id' do
-        present Radar.find(params[:id]).update(declared(params), include_missing: false), with: AtrApi::V1::Entities::Radar
+        radar = Radar.find(params[:id])
+        radar.update(declared(params, include_missing: false))
+        present radar, with: AtrApi::V1::Entities::Radar
       end
 
       desc 'Delete radar'

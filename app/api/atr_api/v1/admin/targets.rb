@@ -6,11 +6,11 @@ module AtrApi::V1::Admin
         requires :radar_id, type: Integer, desc: 'Radar ID.'
         requires :title, type: String, desc: 'Title.'
         optional :description, type: String, desc: 'Description.'
-        requires :kind, values: [:enemy, :friend], desc: 'Kind.'
+        requires :kind, type: Symbol, values: [:enemy, :friend], desc: 'Kind.'
         requires :frame, type: Array[Array], desc: 'Frame.'
       end
       post do
-        target = Radar.find(params[:radar_id]).targets.create!(declared(params), include_missing: false)
+        target = Radar.find(params[:radar_id]).targets.create!(declared(params, include_missing: false))
         present target, with: AtrApi::V1::Entities::Target
       end
 
@@ -23,7 +23,9 @@ module AtrApi::V1::Admin
         optional :frame, type: Array[Array], desc: 'Frame.'
       end
       put ':id' do
-        present Target.find(params[:id]).update(declared(params), include_missing: false), with: AtrApi::V1::Entities::Target
+        target = Target.find(params[:id])
+        target.update(declared(params, include_missing: false))
+        present target, with: AtrApi::V1::Entities::Target
       end
 
       desc 'Delete target'
