@@ -42,8 +42,6 @@ class DetectTargetCommand
     target_half_width = (@target_frame_width / 2).round
     out = []
 
-    #todo: remove NEXTs
-
     (0..@radar_frame_width).each do |c|
       (0..@radar_frame_height).each do |r|
         # at the ends of radar frame

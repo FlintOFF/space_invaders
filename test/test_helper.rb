@@ -23,7 +23,6 @@ class ActiveSupport::TestCase
     user = FactoryBot.create(:user) unless user
     token = Knock::AuthToken.new(payload: { sub: user.id }).token
     header 'Authorization', "Bearer #{token}"
-    header 'Content-Type', 'application/json' #todo: move to another space
   end
 
   def assert_action_show(obj, expected_keys)
@@ -37,5 +36,9 @@ class ActiveSupport::TestCase
         assert parsed_response[key] == value
       end
     end
+  end
+
+  def setup_headers
+    header 'Content-Type', 'application/json'
   end
 end

@@ -4,6 +4,7 @@ class V1::AdminUsersTest < ActiveSupport::TestCase
   include Rack::Test::Methods
 
   def setup
+    setup_headers
     @admin = FactoryBot.create(:user, admin: true)
     @user = FactoryBot.create(:user)
   end

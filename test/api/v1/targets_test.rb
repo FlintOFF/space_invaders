@@ -4,6 +4,7 @@ class V1::TargetsTest < ActiveSupport::TestCase
   include Rack::Test::Methods
 
   def setup
+    setup_headers
     @target = FactoryBot.create(:target)
   end
 

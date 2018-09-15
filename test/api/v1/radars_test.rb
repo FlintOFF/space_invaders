@@ -4,6 +4,7 @@ class V1::RadarsTest < ActiveSupport::TestCase
   include Rack::Test::Methods
 
   def setup
+    setup_headers
     @radar = FactoryBot.create(:radar)
   end
 

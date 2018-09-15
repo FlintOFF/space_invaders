@@ -15,7 +15,7 @@ class TargetTest < ActiveSupport::TestCase
   end
 
   context 'fields' do
-    should define_enum_for(:kind) #TODO: enum kind: { enemy: 0, friend: 1 }
+    should define_enum_for(:kind).with(enemy: 0, friend: 1)
   end
 
   context '#validate_frame_resolution' do

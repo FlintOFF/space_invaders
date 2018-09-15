@@ -4,6 +4,7 @@ class V1::TasksTest < ActiveSupport::TestCase
   include Rack::Test::Methods
 
   def setup
+    setup_headers
     @user = FactoryBot.create(:user)
     @radar = FactoryBot.create(:radar)
     @target = FactoryBot.create(:target, radar: @radar)

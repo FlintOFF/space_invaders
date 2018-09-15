@@ -15,13 +15,10 @@ class TaskTest < ActiveSupport::TestCase
 
   context 'validations' do
     should validate_presence_of(:frame)
-    # binding.pry
-    # should allow_value("user@example.com").for(:email)
-    # should_not allow_value("not-an-email").for(:email)
   end
 
   context 'fields' do
-    should define_enum_for(:status) #TODO: add this #.with_values(pending: 0, working: 3, failed: 6, complete: 9).backed_by_column_of_type(:integer)
+    should define_enum_for(:status).with(pending: 0, working: 3, failed: 6, complete: 9)
   end
 
   context '#validate_frame_resolution' do

@@ -5,7 +5,7 @@ class Target < ApplicationRecord
 
   enum kind: { enemy: 0, friend: 1 }
 
-  validates :frame, presence: true #todo: type must be an array
+  validates :frame, presence: true
   validate :validate_frame_resolution
 
   def validate_frame_resolution
