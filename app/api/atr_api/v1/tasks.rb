@@ -3,7 +3,9 @@ module AtrApi::V1
     use Grape::Knock::Authenticable
 
     namespace :tasks do
-      desc 'List of tasks'
+      desc 'List of tasks' do
+        success Entities::TaskList
+      end
       params do
         use :pagination
       end
@@ -11,7 +13,9 @@ module AtrApi::V1
         present current_user.tasks.page(params[:page]).per(params[:per_page]), with: Entities::TaskList
       end
 
-      desc 'Show task'
+      desc 'Show task' do
+        success Entities::Task
+      end
       params do
         requires :id, type: Integer, desc: 'Task ID'
       end
@@ -19,7 +23,9 @@ module AtrApi::V1
         present current_user.tasks.find(params[:id]), with: Entities::Task
       end
 
-      desc 'Create task'
+      desc 'Create task' do
+        success Entities::Task
+      end
       params do
         requires :radar_id, type: Integer, desc: 'Radar ID.'
         requires :frame, type: Array[Array], desc: 'Radar frame.'

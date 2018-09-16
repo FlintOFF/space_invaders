@@ -15,5 +15,6 @@ module AtrApi
     end
 
     mount AtrApi::V1::Root
+    add_swagger_documentation
   end
 end

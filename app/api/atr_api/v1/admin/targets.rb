@@ -1,7 +1,9 @@
 module AtrApi::V1::Admin
   class Targets < AtrApi::V1::Admin::Root
     namespace :targets do
-      desc 'Create target'
+      desc 'Create target' do
+        success AtrApi::V1::Entities::Target
+      end
       params do
         requires :radar_id, type: Integer, desc: 'Radar ID.'
         requires :title, type: String, desc: 'Title.'
@@ -14,7 +16,9 @@ module AtrApi::V1::Admin
         present target, with: AtrApi::V1::Entities::Target
       end
 
-      desc 'Update target'
+      desc 'Update target' do
+        success AtrApi::V1::Entities::Target
+      end
       params do
         requires :id, type: Integer, desc: 'Target ID.'
         optional :title, type: String, desc: 'Title.'

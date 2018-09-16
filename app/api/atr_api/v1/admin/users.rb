@@ -1,7 +1,9 @@
 module AtrApi::V1::Admin
   class Users < AtrApi::V1::Admin::Root
     resource :users do
-      desc 'List of users'
+      desc 'List of users' do
+        success AtrApi::V1::Entities::UserList
+      end
       params do
         use :pagination
       end
@@ -9,7 +11,9 @@ module AtrApi::V1::Admin
         present User.page(params[:page]).per(params[:per_page]), with: AtrApi::V1::Entities::UserList
       end
 
-      desc 'Show user'
+      desc 'Show user' do
+        success AtrApi::V1::Entities::User
+      end
       params do
         requires :id, type: Integer, desc: 'User ID'
       end
@@ -17,7 +21,9 @@ module AtrApi::V1::Admin
         present User.find(params[:id]), with: AtrApi::V1::Entities::User
       end
 
-      desc 'Create user'
+      desc 'Create user' do
+        success AtrApi::V1::Entities::User
+      end
       params do
         requires :email, allow_blank: false, regexp: /.+@.+/, desc: 'Email.'
         requires :password, allow_blank: false, desc: 'Password.'
@@ -27,7 +33,9 @@ module AtrApi::V1::Admin
         present User.create!(declared(params, include_missing: false)), with: AtrApi::V1::Entities::User
       end
 
-      desc 'Update user'
+      desc 'Update user' do
+        success AtrApi::V1::Entities::User
+      end
       params do
         requires :id, type: Integer, desc: 'User ID.'
         optional :email, allow_blank: false, regexp: /.+@.+/, desc: 'Email.'

@@ -1,7 +1,9 @@
 module AtrApi::V1::Admin
   class Radars < AtrApi::V1::Admin::Root
     resource :radars do
-      desc 'Create radar'
+      desc 'Create radar' do
+        success AtrApi::V1::Entities::Radar
+      end
       params do
         requires :title, type: String, desc: 'Title.'
         optional :description, type: String, desc: 'Description.'
@@ -13,7 +15,9 @@ module AtrApi::V1::Admin
         present Radar.create!(declared(params, include_missing: false)), with: AtrApi::V1::Entities::Radar
       end
 
-      desc 'Update radar'
+      desc 'Update radar' do
+        success AtrApi::V1::Entities::Radar
+      end
       params do
         requires :id, type: Integer, desc: 'Radar ID.'
         optional :title, type: String, desc: 'Title.'

@@ -3,7 +3,9 @@ module AtrApi::V1
     use Grape::Knock::Authenticable
 
     namespace :targets do
-      desc 'List of targets'
+      desc 'List of targets' do
+        success Entities::TargetList
+      end
       params do
         use :pagination
       end
@@ -11,7 +13,9 @@ module AtrApi::V1
         present Target.page(params[:page]).per(params[:per_page]), with: Entities::TargetList
       end
 
-      desc 'Show target'
+      desc 'Show target' do
+        success Entities::Target
+      end
       params do
         requires :id, type: Integer, desc: 'Target ID'
       end

@@ -82,6 +82,8 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
     crass (1.0.4)
+    declarative (0.0.10)
+    declarative-option (0.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.11)
@@ -109,6 +111,14 @@ GEM
     grape-knock (0.2.0)
       grape (>= 0.10)
       knock
+    grape-swagger (0.31.0)
+      grape (>= 0.16.2)
+    grape-swagger-entity (0.3.0)
+      grape-entity (>= 0.5.0)
+      grape-swagger (>= 0.31.0)
+    grape-swagger-representable (0.2.1)
+      grape-swagger (>= 0.31.0)
+      representable
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -199,6 +209,10 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.0.2)
+    representable (3.0.4)
+      declarative (< 0.1.0)
+      declarative-option (< 0.2.0)
+      uber (< 0.2.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.5.7)
@@ -246,6 +260,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    uber (0.1.0)
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     virtus (1.0.5)
@@ -279,6 +294,9 @@ DEPENDENCIES
   grape
   grape-entity
   grape-knock
+  grape-swagger
+  grape-swagger-entity
+  grape-swagger-representable
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
