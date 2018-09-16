@@ -36,5 +36,5 @@ heroku run rake db:setup
 ## Test
 * For run all tests `rails test`
 * For test manually over heroku:
-    * generate token `curl -d '{"email": "smstur@gmail.com", "password": "super_password"}' -H "Content-Type: application/json" -X POST https://sleepy-ocean-53971.herokuapp.com/tokens`
-    * get task result `curl -H "Authorization: Bearer <token>" -H "Content-Type: application/json" https://sleepy-ocean-53971.herokuapp.com/tasks/1`
+    * generate token `curl -d '{"email": "smstur@gmail.com", "password": "super_password"}' -H "Content-Type: application/json" -X POST https://space-invaders-atr.herokuapp.com/tokens`
+    * get task result `curl -H "Authorization: Bearer <token>" -H "Content-Type: application/json" https://space-invaders-atr.herokuapp.com/tasks/1`
