@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount AtrApi::Root => '/'
-  mount GrapeSwaggerRails::Engine => '/swagger'
+  mount AtrApi::Root => '/api'
+  mount GrapeSwaggerRails::Engine => '/'
 end

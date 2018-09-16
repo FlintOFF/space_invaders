@@ -14,7 +14,7 @@ class TaskFlowTest < ActionDispatch::IntegrationTest
   end
 
   test 'Detect targets on radar frame' do
-    post '/tasks', params: { radar_id: @radar.id, frame: @radar_frame }.to_json, headers: @headers
+    post '/api/tasks', params: { radar_id: @radar.id, frame: @radar_frame }.to_json, headers: @headers
     assert response.status == 201
 
     expected = [

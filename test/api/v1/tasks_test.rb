@@ -11,49 +11,49 @@ class V1::TasksTest < ActiveSupport::TestCase
     @task = FactoryBot.create(:task, user: @user, radar: @radar)
   end
 
-  context 'GET /tasks' do
+  context 'GET /api/tasks' do
     should 'return list of tasks' do
       log_in(@user)
-      get '/tasks'
+      get '/api/tasks'
       assert_status(200)
       assert parsed_response.size == 1
     end
   end
 
-  context 'GET /tasks/:id' do
+  context 'GET /api/tasks/:id' do
     should 'return task info' do
       log_in(@user)
-      get "/tasks/#{@task.id}"
+      get "/api/tasks/#{@task.id}"
       assert_status(200)
       assert_action_show(@task, [:id, :radar_id, :status, :results, :messages, :created_at, :updated_at])
     end
 
     should 'return error when task is missing' do
       log_in(@user)
-      get '/tasks/0'
+      get '/api/tasks/0'
       assert_status(404)
       assert parsed_response.include?(:error)
     end
   end
 
-  context 'POST /tasks' do
+  context 'POST /api/tasks' do
     should 'return task info' do
       log_in(@user)
-      post '/tasks', { radar_id: @radar.id, frame: @task.frame }.to_json
+      post '/api/tasks', { radar_id: @radar.id, frame: @task.frame }.to_json
       assert_status(201)
       assert parsed_response.include?(:id)
     end
 
     should 'return error when Radar ID is wrong' do
       log_in(@user)
-      post '/tasks', { radar_id: 0, frame: @task.frame }.to_json
+      post '/api/tasks', { radar_id: 0, frame: @task.frame }.to_json
       assert_status(404)
       assert parsed_response.include?(:error)
     end
 
     should 'return error when frame is wrong' do
       log_in(@user)
-      post '/tasks', { radar_id: @radar.id, frame: [['o']] }.to_json
+      post '/api/tasks', { radar_id: @radar.id, frame: [['o']] }.to_json
       assert_status(422)
       assert parsed_response.include?(:error)
     end
@@ -61,7 +61,7 @@ class V1::TasksTest < ActiveSupport::TestCase
 
   context 'work with user area without token' do
     should 'return error' do
-      get '/tasks'
+      get '/api/tasks'
       assert_status(403)
       assert parsed_response[:error] == 'Forbidden'
     end
