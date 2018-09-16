@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :radar do
-    title { 'Radar #1' }
+    sequence(:title) { |n| "Radar #{n}" }
     description { 'Description for radar' }
     frame_height { 2 }
     frame_width { 2 }
-    frame_symbols { ['-', 'o'] }
+    frame_symbols { %w(- o) }
   end
 end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :target do
     radar
-    title { 'Target #1' }
+    sequence(:title) { |n| "Target #{n}" }
     description { 'Description for target' }
     kind { :enemy }
     frame { [['o']] }

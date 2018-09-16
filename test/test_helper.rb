@@ -21,8 +21,7 @@ class ActiveSupport::TestCase
 
   def log_in(user = nil)
     user = FactoryBot.create(:user) unless user
-    token = Knock::AuthToken.new(payload: { sub: user.id }).token
-    header 'Authorization', "Bearer #{token}"
+    header 'Authorization', "Bearer #{generate_token(user)}"
   end
 
   def assert_action_show(obj, expected_keys)
@@ -40,5 +39,9 @@ class ActiveSupport::TestCase
 
   def setup_headers
     header 'Content-Type', 'application/json'
+  end
+
+  def generate_token(user)
+    Knock::AuthToken.new(payload: { sub: user.id }).token
   end
 end
