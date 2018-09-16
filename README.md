@@ -38,3 +38,6 @@ heroku run rake db:setup
 * For test manually over heroku:
     * generate token `curl -d '{"email": "smstur@gmail.com", "password": "super_password"}' -H "Content-Type: application/json" -X POST https://space-invaders-atr.herokuapp.com/tokens`
     * get task result `curl -H "Authorization: Bearer <token>" -H "Content-Type: application/json" https://space-invaders-atr.herokuapp.com/tasks/1`
+    
+## Other
+* Swagger documentation is available by [link](https://space-invaders-atr.herokuapp.com/swagger_doc)
