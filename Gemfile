@@ -20,10 +20,9 @@ gem 'grape'
 gem 'grape-entity'
 gem 'grape-knock'
 gem 'grape-swagger'
-# For Grape::Entity ( https://github.com/ruby-grape/grape-entity )
-gem 'grape-swagger-entity'
-# For representable ( https://github.com/apotonick/representable )
-gem 'grape-swagger-representable'
+gem 'grape-swagger-rails'
+gem 'grape-swagger-entity' # For Grape::Entity ( https://github.com/ruby-grape/grape-entity )
+gem 'grape-swagger-representable' # For representable ( https://github.com/apotonick/representable )
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

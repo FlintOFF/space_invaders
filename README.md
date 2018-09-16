@@ -40,4 +40,4 @@ heroku run rake db:setup
     * get task result `curl -H "Authorization: Bearer <token>" -H "Content-Type: application/json" https://space-invaders-atr.herokuapp.com/tasks/1`
     
 ## Other
-* Swagger documentation is available by [link](https://space-invaders-atr.herokuapp.com/swagger_doc)
+* Swagger documentation is available by [link](https://space-invaders-atr.herokuapp.com/swagger)
