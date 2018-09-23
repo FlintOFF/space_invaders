@@ -51,8 +51,7 @@ For authorization I use JWT.
 First, you need to generate JWT over endpoint '/api/tokens'. 
 After, you need send your token over the header for each request. For example "Authorization: Bearer <token>".
 
-You can find the recognition logic by the path `app/commands/detect_target_command.rb`. 
-This piece of code is absolutely separated from this project and can be moved to GEM and reused in another project.  
+All recognition logic was removed from path `app/commands/detect_target_command.rb` and placed to GEM [BinaryImageToolset](https://github.com/FlintOFF/binary_image_toolset). 
 
 Please take a look on the integration test `test/integration/api/task_flow_test.rb`. It works with data from the test task and contains the results for it.    
 
@@ -62,7 +61,7 @@ Please take a look on the integration test `test/integration/api/task_flow_test.
 * Return unknown targets;
 * Realize async work (background jobs + callback url);
 * Think about upload radar frame through a file or single string;
-* Move recognition logic to GEM;
+* ~~Move recognition logic to GEM;~~
 
 ## Issues:
 * Swagger do not support JWT
