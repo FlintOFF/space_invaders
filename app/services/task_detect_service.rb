@@ -20,7 +20,7 @@ class TaskDetectService
       command = DetectTargetCommand.new(
         radar_frame: @task.frame,
         target_frame: target.frame,
-        configs: { minimum_match: @task.minimum_match }
+        configs: { min_match: @task.minimum_match }
       ).call
 
       if command.success?

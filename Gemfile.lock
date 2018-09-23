@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/FlintOFF/binary_image_toolset
+  revision: e8878c4710627799c1ab02c5361953affaeebf32
+  specs:
+    binary_image_toolset (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -286,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  binary_image_toolset!
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -324,4 +331,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.16.5
